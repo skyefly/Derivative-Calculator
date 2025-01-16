@@ -3,19 +3,16 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Expression {
-    private ProjLinkedList<ITerm> terms; // linked list of all terms
+    private ProjLinkedList<ITerm> terms;
     
-    // Constructs an empty expression
     public Expression() {
         terms = new ProjLinkedList<>();
     }
     
-    // Adds new term to the expression
     public void add(ITerm term) {
         terms.add(term);
     }
     
-    // Calculates derivate of expression
     public Expression getDerivative() {
         Expression derivativeExpr = new Expression();
         int index = 0;
@@ -29,7 +26,6 @@ public class Expression {
         return derivativeExpr;
     }
     
-    // Evaluates expression at value x
     public double getEvaluation(double x) {
         double sum = 0;
         int index = 0;
@@ -40,7 +36,6 @@ public class Expression {
         return sum;
     }
     
-    // Converts expression to string representation
     @Override
     public String toString() {
         ArrayList<ITerm> termList = new ArrayList<>();
@@ -51,7 +46,6 @@ public class Expression {
             termList.add(term);
         }
         
-        // Sort terms
         Collections.sort(termList, new Comparator<ITerm>() {
             @Override
             public int compare(ITerm t1, ITerm t2) {
@@ -84,7 +78,6 @@ public class Expression {
             }
         });
         
-        // Build string representation
         StringBuilder sb = new StringBuilder();
         for (ITerm sortedTerm : termList) {
             sb.append(sortedTerm.toString()).append(" + ");

@@ -1,13 +1,11 @@
 public class TrigTerm extends LinearTerm {
-    private TrigType type; // Trig type (sin or cos)
+    private TrigType type;
     
-    // Constructs a TrigTerm with the specified value and type
     public TrigTerm(int a, TrigType type) {
         super(a);
         this.type = type;
     }
     
-    // Calculates derivative of trig term
     @Override
     public ITerm derivative() {
         if (type == TrigType.SINE) {
@@ -17,7 +15,6 @@ public class TrigTerm extends LinearTerm {
         }
     }
     
-    // Evaluates derivative at value x
     @Override
     public double evaluate(double x) {
         double radians = Math.toRadians(x);
@@ -31,7 +28,6 @@ public class TrigTerm extends LinearTerm {
         return result;
     }
     
-    // Converts term to string representation
     @Override
     public String toString() {
         if (type == TrigType.SINE) {
